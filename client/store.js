@@ -8,14 +8,12 @@ import {browserHistory} from 'react-router';
 
 import rootReducer from './reducers/index';
 
-import comments from './data/comments';
-import posts from './data/posts';
 import lots from './data/lots';
 
 // create an object for default data
 
 const defaultState = {
-	posts, comments, lots
+	lots
 };
 
 const store = createStore(rootReducer, defaultState);

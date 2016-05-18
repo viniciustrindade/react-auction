@@ -11,7 +11,7 @@ export default class Main extends React.Component {
 
 				<ul>
 					<li><Link to="/">Home</Link></li>
-					<li><Link to="/lot/12">Lot 12</Link></li>
+					<li><Link to="/new-lot">New Lot</Link></li>
 				</ul>
 				{React.cloneElement(this.props.children, this.props)}
 			</div>

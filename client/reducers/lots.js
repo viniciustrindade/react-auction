@@ -2,9 +2,9 @@
 
 function lots(state = [], action) {
 
-	switch(action) {
+	switch(action.type) {
 		case 'BID':
-			console.log(`Bidding ${i}`);
+		{
 			const i = action.index;
 			const price = action.price;
 			return [
@@ -12,6 +12,16 @@ function lots(state = [], action) {
 				{...state[i], price},
 				...state.slice(i + 1)
 			];
+		}
+
+		case 'PLACE_LOT':
+		{
+			const {name, id, code, price, image} = action;
+			return [
+				...state,
+				{name, id, code, price, image}
+			];
+		}
 
 		default:
 			return state;
