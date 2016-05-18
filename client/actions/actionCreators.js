@@ -1,6 +1,7 @@
 // increment
 
 export function increment(index) {
+
 	return {
 		type: 'INCREMENT_LIKES',
 		index
@@ -23,5 +24,14 @@ export function removeComment(postId, i) {
 		type: 'REMOVE_COMMENT',
 		i,
 		postId
+	}
+}
+
+export function bid(index, price) {
+	console.log(`Bid Called for ${index}, offered ${price}`);
+	return {
+		type: 'BID',
+		index,
+		price
 	}
 }

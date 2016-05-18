@@ -1,10 +1,13 @@
 import React from 'react';
 
-export default class SingleLot extends React.Component {
+import SingleLot from './SingleLot';
+
+export default class LotGrid extends React.Component {
+
 	render() {
 		return (
 			<div className="photo-grid">
-				Lot Grid
+				{this.props.lots.map((lot, i) => <SingleLot {...this.props} key={i} i={i} lot={lot} />)}
 			</div>
 		)
 	}

@@ -3,20 +3,33 @@
 const lots = [
 	{
 		id: 1,
-		name: 'Sword of Infinite Wisdom'
+		code: 'abc',
+		name: 'Sword of Infinite Wisdom',
+		price: 10,
+		image: '/img/img-1.jpg'
 	},
 	{
 		id: 2,
-		name: 'Ring of Power'
+		code: 'abd',
+		name: 'Ring of Power',
+		price: 12,
+		image: '/img/img-1.jpg'
+
 	},
 	{
 		id: 3,
-		name: 'Boots of Speed'
-	},
-	{
-		id: 4,
-		name: 'Helmet of Void'
+		code: 'abe',
+		name: 'Boots of Speed',
+		price: 15,
+		image: '/img/img-1.jpg'
 	}
+	/* {
+		id: 4,
+		code: 'abf',
+		name: 'Helmet of Void',
+		price: 17,
+		image: '/img/img-1.jpg'
+	} */
 ];
 
 export default lots;

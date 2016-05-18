@@ -7,8 +7,8 @@ import css from './styles/style.styl';
 
 // import components
 
-import Main from './components/Main';
-import SingleLot from './components/SingleLot';
+import App from './components/App';
+import LotDetails from './components/LotDetails';
 import LotGrid from './components/LotGrid';
 
 // router
@@ -21,9 +21,9 @@ import store, {history} from './store'
 const router = (
 	<Provider store={store}>
 		<Router history={history}>
-			<Route path="/" component={Main}>
+			<Route path="/" component={App}>
 				<IndexRoute component={LotGrid} />
-				<Route path="/lot/:lotId" component={SingleLot} />
+				<Route path="/lot/:lotId" component={LotDetails} />
 			</Route>
 		</Router>
 	</Provider>
