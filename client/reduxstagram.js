@@ -23,7 +23,7 @@ const router = (
 		<Router history={history}>
 			<Route path="/" component={App}>
 				<IndexRoute component={LotGrid} />
-				<Route path="/lot/:lotId" component={LotDetails} />
+				<Route path="/lot/:code" component={LotDetails} />
 			</Route>
 		</Router>
 	</Provider>
