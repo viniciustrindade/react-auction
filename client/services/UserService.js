@@ -1,6 +1,6 @@
 'use strict';
 
-import users from '../data/users';
+const API = 'http://localhost:9090/api/user';
 
 export default class UserService {
 
@@ -10,7 +10,15 @@ export default class UserService {
 
 	getUsers() {
 		return new Promise((resolve, reject) => {
-			setTimeout(() => resolve(users), 1000);
+			const req = new XMLHttpRequest();
+			req.addEventListener('load', () => {
+				const users = JSON.parse(req.responseText);
+				resolve(users);
+			});
+
+			req.addEventListener('error', reject);
+			req.open('GET', API);
+			req.send();
 		});
 	}
 

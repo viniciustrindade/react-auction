@@ -10,7 +10,12 @@ const users = [
 		id: 16,
 		name: 'Tyler',
 		bank: 312
+	},
+	{
+		id: 31,
+		name: 'Mary',
+		bank: 213
 	}
 ];
 
-export default users;
+module.exports = users;

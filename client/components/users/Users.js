@@ -13,6 +13,8 @@ export default class Users extends React.Component {
 		let userService = new UserService();
 		userService.getUsers().then((users) => {
 			this.props.setUsers(users);
+		}).catch((e) => {
+			console.log('Could not load users');
 		});
 	}
 

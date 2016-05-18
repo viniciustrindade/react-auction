@@ -32,6 +32,8 @@
 
 const express = require('express');
 
+const users = require('./data/users');
+
 module.exports = () => {
 	let router = express.Router();
 
@@ -43,7 +45,7 @@ module.exports = () => {
 
 	router.route('/user')
 		.get((req, res) => {
-			res.json({result: 'ok'});
+			res.json(users);
 		});
 
 	router.route('/user/:userId')

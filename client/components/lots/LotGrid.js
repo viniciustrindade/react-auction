@@ -3,7 +3,7 @@ import React from 'react';
 import SingleLot from './SingleLot';
 
 // services
-import LotService from '../services/LotService';
+import LotService from '../../services/LotService';
 
 export default class LotGrid extends React.Component {
 
