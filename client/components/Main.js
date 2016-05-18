@@ -6,10 +6,14 @@ export default class Main extends React.Component {
 		return (
 			<div>
 				<h1>
-					<Link to="/">Reduxtragram</Link>
+					<Link to="/">Auction</Link>
 				</h1>
 
-				{React.cloneElement(this.props.children, this.props)}
+				<ul>
+					<li><Link to="/">Home</Link></li>
+					<li><Link to="/lot/12">Lot 12</Link></li>
+				</ul>
+				{this.props.children}
 			</div>
 		)
 	}
