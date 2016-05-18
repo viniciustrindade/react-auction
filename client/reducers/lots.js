@@ -23,6 +23,13 @@ function lots(state = [], action) {
 			];
 		}
 
+		case 'SET_LOTS':
+		{
+			return [
+				...action.lots
+			];
+		}
+
 		default:
 			return state;
 

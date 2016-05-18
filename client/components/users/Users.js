@@ -4,7 +4,18 @@ import React from 'react';
 
 import SingleUser from './SingleUser';
 
+// services
+import UserService from '../../services/UserService'
+
 export default class Users extends React.Component {
+
+	componentWillMount() {
+		let userService = new UserService();
+		userService.getUsers().then((users) => {
+			this.props.setUsers(users);
+		})
+
+	}
 
 	onAddUser(e) {
 		e.preventDefault();

@@ -8,14 +8,9 @@ import {browserHistory} from 'react-router';
 
 import rootReducer from './reducers/index';
 
-import lots from './data/lots';
-import users from './data/users';
-
-// create an object for default data
-
 const defaultState = {
-	lots,
-	users
+	lots: [],
+	users: []
 };
 
 const store = createStore(rootReducer, defaultState);

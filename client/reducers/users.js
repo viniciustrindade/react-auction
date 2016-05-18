@@ -13,6 +13,13 @@ function lots(state = [], action) {
 			];
 		}
 
+		case 'SET_USERS':
+		{
+			return [
+				...action.users
+			];
+		}
+
 		default:
 			return state;
 

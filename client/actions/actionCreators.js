@@ -11,6 +11,20 @@ export function placeLot(name, price) {
 	}
 }
 
+export function setLots(lots) {
+	return {
+		type: 'SET_LOTS',
+		lots
+	}
+}
+
+export function setUsers(users) {
+	return {
+		type: 'SET_USERS',
+		users
+	}
+}
+
 export function bid(index, price) {
 	return {
 		type: 'BID',
