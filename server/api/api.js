@@ -32,55 +32,19 @@
 
 const express = require('express');
 
-const users = require('./data/users');
+const userRouter = require('./routers/user')();
+const auctionRouter = require('./routers/auction')();
 
 module.exports = () => {
-	let router = express.Router();
+	let router = express.Router({mergeParams: true});
+
+	router.use('/user', userRouter);
+	router.use('/auc', auctionRouter);
 
 	router
 		.route('/')
 		.get((req, res) => {
 			res.send('API v0.0.1');
-		});
-
-	router.route('/user')
-		.get((req, res) => {
-			res.json(users);
-		});
-
-	router.route('/user/:userId')
-		.get((req, res) => {
-			res.json({result: 'ok'});
-		});
-
-	router.route('/auc')
-		.get((req, res) => {
-			res.json({result: 'ok'});
-		});
-
-	router.route('/auc/:aucId')
-		.get((req, res) => {
-			res.json({result: 'ok'});
-		});
-
-	router.route('/auc/:aucId/lot')
-		.get((req, res) => {
-			res.json({result: 'ok'});
-		});
-
-	router.route('/auc/:aucId/lot/:lotId')
-		.get((req, res) => {
-			res.json({result: 'ok'});
-		});
-
-	router.route('/auc/:aucId/lot/:lotId/bid')
-		.get((req, res) => {
-			res.json({result: 'ok'});
-		});
-
-	router.route('/auc/:aucId/lot/:lotId/bid/:bidId')
-		.get((req, res) => {
-			res.json({result: 'ok'});
 		});
 
 	return router;

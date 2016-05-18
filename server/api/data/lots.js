@@ -31,4 +31,4 @@ const lots = [
 	}
 ];
 
-export default lots;
+module.exports = lots;

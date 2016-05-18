@@ -1,17 +1,16 @@
 'use strict';
 
 const express = require('express');
+const bids = require('../data/bids');
 
 module.exports = () => {
-	let router = express.Router();
+	let router = express.Router({mergeParams: true});
 
 	router
 		.route('/')
 		.get((req, res) => {
-			req.send('USER API');
+			res.json(bids);
 		});
-	
-	
 
 	return router;
 };
