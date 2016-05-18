@@ -2,7 +2,15 @@ import React from 'react';
 import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
-const SingleLot = React.createClass({
+export default class SingleLot extends React.Component {
+
+	handleSubmit(e) {
+		e.preventDefault();
+		let offer = +this.refs.offer.value;
+		this.props.bid(this.props.i, offer);
+		this.refs.bidForm.reset();
+	}
+
 	render() {
 		const { lot, i, comments } = this.props;
 		return (
@@ -20,6 +28,15 @@ const SingleLot = React.createClass({
 
 				<figcaption>
 					<p>{lot.name}</p>
+					<p>{lot.price}</p>
+					<div className="single-photo">
+						<form ref="bidForm" className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
+							<input type="text" ref="offer" placeholder="your bid"/>
+							<input type="submit" hidden />
+						</form>
+					</div>
+
+
 					<div className="control-buttons">
 						<button onClick={this.props.bid.bind(null, i, lot.price + 10)} className="likes">&hearts; {lot.price}</button>
 						<Link className="button" to={`/lot/${lot.code}`}>View</Link>
@@ -29,6 +46,4 @@ const SingleLot = React.createClass({
 			</figure>
 		)
 	}
-});
-
-export default SingleLot;
+}
