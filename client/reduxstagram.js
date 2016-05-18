@@ -8,9 +8,9 @@ import css from './styles/style.styl';
 // import components
 
 import App from './components/App';
-import LotDetails from './components/LotDetails';
-import LotGrid from './components/LotGrid';
-import PlaceLot from './components/PlaceLot';
+import LotDetails from './components/lots/LotDetails';
+import LotGrid from './components/lots/LotGrid';
+import PlaceLot from './components/lots/PlaceLot';
 import Users from './components/users/Users';
 import UserDetails from './components/users/UserDetails';
 
