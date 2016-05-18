@@ -18,3 +18,11 @@ export function bid(index, price) {
 		price
 	}
 }
+
+export function addUser(name, bank) {
+	return {
+		type: 'ADD_USER',
+		name,
+		bank
+	}
+}
