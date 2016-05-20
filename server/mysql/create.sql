@@ -16,12 +16,12 @@ CREATE TABLE lots (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(255),
 	price VARCHAR(255),
-    auction_id INT NOT NULL
-        ADD CONSTRAINT fk_auction
-        FOREIGN KEY (auction_id)
+    auction_id INT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (auction_id)
         references auctions(id),
-    user_id INT NOT NULL
-        ADD CONSTRAINT fk_user
-        FOREIGN KEY (user_id)
+    FOREIGN KEY (user_id)
         references users(id)
 );
+
+insert into users (name, balance) values ('Juriy', 123);
