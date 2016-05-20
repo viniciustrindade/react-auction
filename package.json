@@ -36,6 +36,7 @@
     "eslint-plugin-react": "^5.0.1",
     "express": "^4.13.4",
     "mysql": "^2.10.2",
+    "nconf": "^0.8.4",
     "raven-js": "^2.3.0",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
