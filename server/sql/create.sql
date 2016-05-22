@@ -24,4 +24,5 @@ CREATE TABLE lots (
         references users(id)
 );
 
+insert into auctions(name, code) values ('League of Stars', 'los');
 insert into users (name, balance) values ('Juriy', 123);
