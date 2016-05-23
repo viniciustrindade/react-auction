@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -X POST -d '{"code":"xyz", "name": "XYZ Auction"}' http://localhost:9090/api/auc

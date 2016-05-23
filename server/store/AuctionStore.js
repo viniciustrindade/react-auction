@@ -21,6 +21,18 @@ class AuctionStore {
 		// });
 	}
 
+	addAuction(auction, cb) {
+		this._pool.query('INSERT INTO auctions SET ?', auction,
+			(err, result) => {
+				if (err) {
+					return cb(err);
+				}
+
+				auction.id = result.insertId;
+				cb(null, auction);
+		});
+	}
+
 	getAuction() {
 
 	}

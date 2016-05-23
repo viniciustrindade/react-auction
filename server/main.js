@@ -5,6 +5,7 @@ let express = require('express');
 let cors = require('cors');
 let api = require('./api/api');
 let config = require('./config');
+let bodyParser = require('body-parser');
 
 printConfig();
 
@@ -13,6 +14,7 @@ let server = http.createServer(app);
 
 
 app.use(cors());
+app.use(bodyParser.json());
 app.use('/api', api());
 
 server.listen(9090, () => {

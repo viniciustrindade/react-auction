@@ -1,22 +1,32 @@
 'use strict';
 
 const express = require('express');
-
-const auctions = require('../data/auctions');
 const lotsRouter = require('./lot');
 
 const pool = require('../../dao/pool.js');
 const AuctionStore = require('../../store/AuctionStore');
-const auctionStore = new AuctionStore(pool);
+const store = new AuctionStore(pool);
 
 module.exports = () => {
 	let router = express.Router({mergeParams: true});
 	router
 		.route('/')
 		.get((req, res) => {
-			auctionStore.getAllAuctions((err, data) => {
+			store.getAllAuctions((err, data) => {
 				res.json(data);
 			});
+		})
+		.post((req, res) => {
+			store.addAuction(req.body, (err, auction) => {
+				if (err) {
+					res.status(400);
+					res.json(err);
+					return;
+				}
+
+				res.json(auction);
+			});
+
 		});
 
 	router
