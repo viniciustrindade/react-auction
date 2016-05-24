@@ -37,8 +37,9 @@ module.exports = () => {
 			store.getAuction(aucId, handleDbResponse(res));
 		})
 		.put((req, res) => {
-			const aucId = +req.params.aucId;
-			store.updateAuction(req.body, handleDbResponse(res));
+			const obj = req.body;
+			obj.id = +req.params.aucId;
+			store.updateAuction(obj, handleDbResponse(res));
 		});
 
 	router.use('/:aucId/lot', lotsRouter());
