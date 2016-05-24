@@ -40,6 +40,10 @@ module.exports = () => {
 			const obj = req.body;
 			obj.id = +req.params.aucId;
 			store.updateAuction(obj, handleDbResponse(res));
+		})
+		.delete((req, res) => {
+			const id = +req.params.aucId;
+			store.deleteAuction(id, handleDbResponse(res));
 		});
 
 	router.use('/:aucId/lot', lotsRouter());

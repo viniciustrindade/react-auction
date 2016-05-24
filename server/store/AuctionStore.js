@@ -49,6 +49,16 @@ class AuctionStore {
 			cb(null, rows);
 		});
 	}
+
+	deleteAuction(id, cb) {
+		this._pool.query('DELETE FROM auctions WHERE id = ?', [id], (err, rows) => {
+			if (err) {
+				return cb(err);
+			}
+
+			cb(null, rows);
+		});
+	}
 }
 
 const ALL_AUCTIONS_QUERY = 'SELECT * FROM auctions';
