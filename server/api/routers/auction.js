@@ -8,34 +8,37 @@ const AuctionStore = require('../../store/AuctionStore');
 const store = new AuctionStore(pool);
 
 module.exports = () => {
+	const handleDbResponse = (res) => {
+		return (err, data) => {
+			if (err) {
+				res.status(400);
+				res.json(err);
+				return;
+			}
+
+			res.json(data);
+		}
+	};
+
 	let router = express.Router({mergeParams: true});
 	router
 		.route('/')
 		.get((req, res) => {
-			store.getAllAuctions((err, data) => {
-				res.json(data);
-			});
+			store.getAllAuctions(handleDbResponse(res));
 		})
 		.post((req, res) => {
-			store.addAuction(req.body, (err, auction) => {
-				if (err) {
-					res.status(400);
-					res.json(err);
-					return;
-				}
-
-				res.json(auction);
-			});
-
+			store.addAuction(req.body, handleDbResponse(res));
 		});
 
 	router
 		.route('/:aucId')
 		.get((req, res) => {
 			const aucId = +req.params.aucId;
-
-			const auctionDetails = auctions.find((auc) => auc.id === aucId);
-			res.json(auctionDetails);
+			store.getAuction(aucId, handleDbResponse(res));
+		})
+		.put((req, res) => {
+			const aucId = +req.params.aucId;
+			store.updateAuction(req.body, handleDbResponse(res));
 		});
 
 	router.use('/:aucId/lot', lotsRouter());

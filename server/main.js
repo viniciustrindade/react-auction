@@ -12,7 +12,6 @@ printConfig();
 let app = express();
 let server = http.createServer(app);
 
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', api());

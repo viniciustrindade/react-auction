@@ -7,18 +7,13 @@ class AuctionStore {
 	}
 
 	getAllAuctions(cb) {
-		console.log('Getting all auctions');
 		this._pool.query(ALL_AUCTIONS_QUERY, (err, rows, fields) => {
 			if (err) {
-				cb(err);
+				return cb(err);
 			}
 
 			cb(null, rows);
 		});
-
-		// this._pool.getConnection((err, conn) => {
-
-		// });
 	}
 
 	addAuction(auction, cb) {
@@ -33,8 +28,26 @@ class AuctionStore {
 		});
 	}
 
-	getAuction() {
+	updateAuction(auction, cb) {
+		const values = [auction.name, auction.code, auction.id];
+		this._pool.query('UPDATE auctions SET name = ?, code = ? WHERE id = ?', values,
+			(err, res) => {
+				if (err) {
+					return cb(err);
+				}
 
+				cb(null, auction);
+			});
+	}
+
+	getAuction(id, cb) {
+		this._pool.query('SELECT * FROM auctions WHERE id = ?', [id], (err, rows) => {
+			if (err) {
+				return cb(err);
+			}
+
+			cb(null, rows);
+		});
 	}
 }
 
