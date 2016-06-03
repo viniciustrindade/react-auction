@@ -9,7 +9,10 @@ const pool  = mysql.createPool({
 	host     : config.get('db:host'),
 	user     : config.get('db:user'),
 	password : config.get('db:password'),
-	database : config.get('db:database')
+	database : config.get('db:database'),
+	debug : config.get('db:debug')
 });
+
+console.log(`SQL debug is ${config.get('db:debug')}`);
 
 module.exports = pool;

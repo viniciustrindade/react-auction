@@ -33,8 +33,12 @@ class LotsStore {
 	}
 
 	updateLot(lot, cb) {
-		const values = [lot.name, lot.price, lot.id];
-		this._pool.query('UPDATE auctions SET name = ?, price = ? WHERE id = ?', values,
+		const values = [lot.name, lot.description, lot.price,
+			lot.image_url, lot.auction_id, lot.seller_id, lot.id];
+		this._pool.query(
+			'UPDATE lots SET name = ?, description = ?, price = ?, ' +
+			'image_url = ?, auction_id = ?, seller_id = ? ' +
+			'WHERE id = ?', values,
 			(err, res) => {
 				if (err) {
 					return cb(err);
@@ -44,8 +48,8 @@ class LotsStore {
 			});
 	}
 
-	getLot(id, cb) {
-		this._pool.query('SELECT * FROM lots WHERE id = ?', [id], (err, rows) => {
+	getLot(aucId, lotId, cb) {
+		this._pool.query('SELECT * FROM lots WHERE id = ?', [lotId], (err, rows) => {
 			if (err) {
 				return cb(err);
 			}
@@ -54,8 +58,8 @@ class LotsStore {
 		});
 	}
 
-	deleteLot(id, cb) {
-		this._pool.query('DELETE FROM lots WHERE id = ?', [id], (err, rows) => {
+	deleteLot(aucId, lotId, cb) {
+		this._pool.query('DELETE FROM lots WHERE id = ?', [lotId], (err, rows) => {
 			if (err) {
 				return cb(err);
 			}
