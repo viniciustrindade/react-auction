@@ -32,7 +32,7 @@ module.exports = () => {
 			const aucId = +req.params.aucId;
 			const lot = req.body;
 			lot.auction_id = aucId;
-			store.addLot(req.body, handleDbResponse(res));
+			store.addLot(lot, handleDbResponse(res));
 		});
 
 	router

@@ -4,6 +4,6 @@
 		"user": "juriy",
 		"password": "starfall",
 		"database": "auction",
-		"debug": true
+		"debug": ["ErrorPacket", "ComQueryPacket"]
 	}
 }
