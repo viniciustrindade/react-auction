@@ -84,3 +84,42 @@ Getting bid
 ```
 curl localhost:9090/api/auc/1/lot/11/bid/3
 ```
+
+Users
+------
+
+Get all users
+```
+curl localhost:9090/api/user
+```
+
+Create new user
+```
+curl -H "Content-Type: application/json" -X POST \
+    -d '{"name": "John Galt",
+        "description": "I am John Galt",
+        "img_small": "img/asd1.jpg",
+        "img_big": "img/asd1.jpg",
+        "balance": 3000}' localhost:9090/api/user
+
+```
+
+Get user
+```
+curl localhost:9090/api/user/2
+```
+
+Update user
+```
+curl -H "Content-Type: application/json" -X PUT \
+    -d '{"name": "mr. John Galt",
+        "description": "I am John Galt",
+        "img_small": "img/asd1.jpg",
+        "img_big": "img/asd1.jpg",
+        "balance": 3000}' localhost:9090/api/user/2
+```
+
+Delete user
+```
+curl -X DELETE localhost:9090/api/user/2
+```

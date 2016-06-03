@@ -11,6 +11,9 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(255),
+	description VARCHAR(2000),
+	img_small VARCHAR(255),
+	img_big VARCHAR(255),
 	balance INT NOT NULL
 );
 
@@ -42,15 +45,30 @@ CREATE TABLE bids (
         references users(id)
 );
 
+
+--------------
+-- Kill all
+--------------
+DROP TABLE bids;
+DROP TABLE lots;
+DROP TABLE auctions;
+DROP TABLE users;
+
 --------------
 -- Initial data
 --------------
+INSERT INTO users
+    (name, description, img_small, img_big, balance)
+VALUES
+    ('Juriy', 'Nice User', 'img/123.jpg', 'img/321.jpg', 500);
+
 insert into auctions(name, code) values ('League of Stars', 'los');
-insert into users (name, balance) values ('Juriy', 123);
 
 INSERT INTO lots
     (name, description, price, image_url, auction_id, seller_id)
 VALUES
     ('Dummy Lot', 'This is my dummy lot', 100, 'uasd1.jpg', 1, 1);
 
-INSERT INTO bids (lot_id, bidder_id, price) VALUES (11, 1, 200);
+INSERT INTO bids (lot_id, bidder_id, price) VALUES (1, 1, 200);
+
+
