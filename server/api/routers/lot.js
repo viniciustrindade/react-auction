@@ -3,7 +3,7 @@
 const express = require('express');
 
 const bidsRouter = require('./bid')();
-const pool = require('../../dao/pool.js');
+const pool = require('../../db/pool.js');
 const LotsStore = require('../../store/LotsStore');
 const store = new LotsStore(pool);
 

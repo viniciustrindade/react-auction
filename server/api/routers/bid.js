@@ -2,7 +2,7 @@
 
 const express = require('express');
 
-const pool = require('../../dao/pool.js');
+const pool = require('../../db/pool.js');
 const LotsStore = require('../../store/BidsStore');
 const store = new LotsStore(pool);
 

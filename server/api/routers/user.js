@@ -2,7 +2,7 @@
 
 const express = require('express');
 
-const pool = require('../../dao/pool.js');
+const pool = require('../../db/pool.js');
 const UserStore = require('../../store/UserStore');
 const store = new UserStore(pool);
 
@@ -24,26 +24,26 @@ module.exports = () => {
 	router
 		.route('/')
 		.get((req, res) => {
-			store.getAllUsers(handleDbResponse(res));
+			store.getAll(handleDbResponse(res));
 		})
 		.post((req, res) => {
-			store.addUser(req.body, handleDbResponse(res));
+			store.addOne(req.body, handleDbResponse(res));
 		});
 
 	router
 		.route('/:userId')
 		.get((req, res) => {
 			const userId = +req.params.userId;
-			store.getUser(userId, handleDbResponse(res));
+			store.getOne(userId, handleDbResponse(res));
 		})
 		.put((req, res) => {
 			const obj = req.body;
 			obj.id = +req.params.userId;
-			store.updateUser(obj, handleDbResponse(res));
+			store.updateOne(obj, handleDbResponse(res));
 		})
 		.delete((req, res) => {
 			const userId = +req.params.userId;
-			store.deleteUser(userId, handleDbResponse(res));
+			store.deleteOne(userId, handleDbResponse(res));
 		});
 
 	return router;
